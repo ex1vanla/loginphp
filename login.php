@@ -33,7 +33,9 @@ $password = "";
 $errors = array();
 
 // Kết nối tới cơ sở dữ liệu MySQL
+echo "test1";
 $db = mysqli_connect('mysql-sever.mysql.database.azure.com', 'vanla', 'Exone123@', 'test2');
+echo "test2";
 print_r($db);
 
 if (!$db) {

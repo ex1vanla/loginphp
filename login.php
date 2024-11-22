@@ -9,15 +9,6 @@
 <body>
     <h2>Login</h2>
 
-    <!-- Hiển thị lỗi nếu có -->
-    <?php if (count($errors) > 0): ?>
-        <div style="color: red;">
-            <?php foreach ($errors as $error): ?>
-                <p><?php echo $error; ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-
     <!-- Form đăng nhập -->
     <form action="login.php" method="POST">
         <label for="username">Username:</label>
@@ -76,3 +67,12 @@ if (isset($_POST['login_user'])) {
     }
 }
 ?>
+
+<!-- Hiển thị lỗi nếu có -->
+<?php if (count($errors) > 0): ?>
+    <div style="color: red;">
+        <?php foreach ($errors as $error): ?>
+            <p><?php echo $error; ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

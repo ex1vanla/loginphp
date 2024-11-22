@@ -1,3 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+
+    <!-- Hiển thị lỗi nếu có -->
+    <?php if (count($errors) > 0): ?>
+        <div style="color: red;">
+            <?php foreach ($errors as $error): ?>
+                <p><?php echo $error; ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Form đăng nhập -->
+    <form action="login.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit" name="login_user">Login</button>
+    </form>
+</body>
+</html>
+
 <?php
 session_start();
 
@@ -43,36 +76,3 @@ if (isset($_POST['login_user'])) {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h2>Login Test</h2>
-
-    <!-- Hiển thị lỗi nếu có -->
-    <?php if (count($errors) > 0): ?>
-        <div style="color: red;">
-            <?php foreach ($errors as $error): ?>
-                <p><?php echo $error; ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-
-    <!-- Form đăng nhập -->
-    <form action="login.php" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
-        <button type="submit" name="login_user">Login</button>
-    </form>
-</body>
-</html>
-

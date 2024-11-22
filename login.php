@@ -35,7 +35,6 @@ $db = mysqli_connect('mysql-sever.mysql.database.azure.com', 'vanla', 'Exone123@
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully!";
 
 // Kiểm tra nếu người dùng nhấn nút login
 if (isset($_POST['login_user'])) {
@@ -49,11 +48,12 @@ if (isset($_POST['login_user'])) {
     // Nếu không có lỗi, kiểm tra thông tin người dùng trong cơ sở dữ liệu
     if (count($errors) == 0) {
         // Mã hóa mật khẩu người dùng nhập vào (sử dụng MD5 ở đây)
-        $password = md5($password);
+        // $password = md5($password);
 
         // Truy vấn để kiểm tra người dùng có tồn tại không
         $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
         $result = mysqli_query($db, $query);
+        echo "SELECT * FROM users WHERE username='$username' AND password='$password'";
 
         if (mysqli_num_rows($result) == 1) {
             // Nếu tìm thấy, đăng nhập thành công

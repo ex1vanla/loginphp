@@ -38,8 +38,11 @@ if (!$db) {
 
 // Kiểm tra nếu người dùng nhấn nút login
 if (isset($_POST['login_user'])) {
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
+    // $username = mysqli_real_escape_string($db, $_POST['username']);
+    // $password = mysqli_real_escape_string($db, $_POST['password']);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
 
     // Kiểm tra nếu các trường không rỗng
     if (empty($username)) { array_push($errors, "Username is required"); }
@@ -48,21 +51,27 @@ if (isset($_POST['login_user'])) {
     // Nếu không có lỗi, kiểm tra thông tin người dùng trong cơ sở dữ liệu
     if (count($errors) == 0) {
         // Mã hóa mật khẩu người dùng nhập vào (sử dụng MD5 ở đây)
-        $password = md5($password);
+        // $password = md5($password);
 
         // Truy vấn để kiểm tra người dùng có tồn tại không
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $query = "select * from users where username = '$username' and password = '$password'"; //a' or '1'='1
+        
         $result = mysqli_query($db, $query);
-        echo "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        echo $query;
 
-        if (mysqli_num_rows($result) == 1) {
-            // Nếu tìm thấy, đăng nhập thành công
-            $_SESSION['username'] = $username;
-            $_SESSION['success'] = "You are now logged in";
-            header('location: welcome.php');
+        // if (mysqli_num_rows($result) == 0) {
+        //     // Nếu tìm thấy, đăng nhập thành công
+        //     $_SESSION['username'] = $username;
+        //     $_SESSION['success'] = "You are now logged in";
+        //     header('location: welcome.php');
+        // } else {
+        //     // Nếu không tìm thấy, hiển thị lỗi
+        //     array_push($errors, "Wrong username/password combination");
+        // }
+        if(mysqli_num_rows($result) == 0) {
+            echo '<p style="color:red"> Login failed </p>' ;
         } else {
-            // Nếu không tìm thấy, hiển thị lỗi
-            array_push($errors, "Wrong username/password combination");
+            echo '<p style="color:green"> Login Successful</p>';
         }
     }
 }

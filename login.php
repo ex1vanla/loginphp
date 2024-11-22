@@ -48,7 +48,7 @@ if (isset($_POST['login_user'])) {
     // Nếu không có lỗi, kiểm tra thông tin người dùng trong cơ sở dữ liệu
     if (count($errors) == 0) {
         // Mã hóa mật khẩu người dùng nhập vào (sử dụng MD5 ở đây)
-        // $password = md5($password);
+        $password = md5($password);
 
         // Truy vấn để kiểm tra người dùng có tồn tại không
         $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";

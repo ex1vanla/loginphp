@@ -31,7 +31,7 @@ $password = "";
 $errors = array();
 
 // Kết nối tới cơ sở dữ liệu MySQL
-$db = mysqli_connect('mysql-sever.mysql.database.azure.com', 'vanla', 'Exone123@', 'test2', 3306);
+$db = mysqli_connect('mysql-sever.mysql.database.azure.com', 'vanla', 'Exone123@', 'test2');
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -54,8 +54,7 @@ if (isset($_POST['login_user'])) {
         // $password = md5($password);
 
         // Truy vấn để kiểm tra người dùng có tồn tại không
-        $query = "select * from users where username = '$username' and password = '$password'"; //a' or '1'='1
-        
+        $query = "select * from users where username = '$username' and password = '$password'"; 
         $result = mysqli_query($db, $query);
         echo $query;
 

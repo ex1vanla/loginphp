@@ -52,7 +52,7 @@ if (isset($_POST['login_user'])) {
     <title>Login</title>
 </head>
 <body>
-    <h2>Login</h2>
+    <h2>Login Test</h2>
 
     <!-- Hiển thị lỗi nếu có -->
     <?php if (count($errors) > 0): ?>
@@ -75,3 +75,4 @@ if (isset($_POST['login_user'])) {
     </form>
 </body>
 </html>
+

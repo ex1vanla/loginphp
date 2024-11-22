@@ -32,6 +32,8 @@ $errors = array();
 
 // Kết nối tới cơ sở dữ liệu MySQL
 $db = mysqli_connect('mysql-sever.mysql.database.azure.com', 'vanla', 'Exone123@', 'test2');
+var_dump($db);
+
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }

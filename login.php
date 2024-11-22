@@ -25,6 +25,8 @@
 <?php
 session_start();
 
+echo "this is test for php code";
+
 // Khai báo biến
 $username = "";
 $password = "";
